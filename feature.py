@@ -58,8 +58,18 @@ def search_student(busqueda, date_student):
             print(
                 f"id:{date['id']}|name:{date['name']}|age:{date['age']}|course:{date['course']}|state:{date['state']}")
             return False
-# def actualizar_info(date_student,name,id,age,cour):
-
+def actualizar_info(date_student,new_name,new_id):
+        new_name=input("ingrese el nuevo estudiante:  ")
+        new_id= input("ingrese el nuevo id : ")
+        actualizar_info1 = search_student(date_student, new_id,new_name)
+        if actualizar_info1:
+            # Solo actualiza los campos que el usuario proporcionó
+            if new_name is not None:
+                actualizar_info1["name"] = new_name
+            if new_id is not None:
+                actualizar_info1["id"] = new_id
+            return True
+        return False
 
 def eliminar_student(name, date_student):
     for date in date_student:
